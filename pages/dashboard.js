@@ -1,3 +1,4 @@
+import Navigation from "components/Navigation";
 import Link from "next/link";
 import { auth } from "public/firebase";
 import { useEffect } from "react";
@@ -13,12 +14,22 @@ export default function dashboard() {
 
   if (!user) {
     return (
-      <div className="text-center">
-        <p className="">you are not signed in!</p>
-        <Link href="/login">Login</Link>
-      </div>
+      <>
+        <Navigation />
+        <div className="text-center my-32">
+          <p className="text-4xl mb-2">you are not signed in!</p>
+          <Link href="/login" className="font-xl">
+            Login
+          </Link>
+        </div>
+      </>
     );
   }
 
-  return <div>dashboard</div>;
+  return (
+    <>
+      <Navigation dashboard />
+      <h1>dashboard</h1>
+    </>
+  );
 }
