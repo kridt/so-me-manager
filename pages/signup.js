@@ -1,20 +1,36 @@
-import { auth } from "/firebase";
-import { useAuth } from "utils/user-auth";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import Navigation from "components/Navigation";
+import { useEffect } from "react";
+import { auth } from "/firebase";
 
-export default function login() {
-  const { setUser } = useAuth();
+export default function signup() {
+  const { status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push(from ? from : "/");
+    }
+  }, [status, router]);
 
   function handleLogin(e) {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
 
-    auth.signInWithEmailAndPassword(email, password).then((user) => {
-      setUser(user);
-    });
+    auth
+      .createUserWithEmailAndPassword(
+        e.target.email.value,
+        e.target.password.value
+      )
+      .then((user) => {
+        console.log(user);
+        router.push("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -30,7 +46,7 @@ export default function login() {
               accounts.
             </p>
           </div>
-          <form onSubmit={handleLogin} className="flex flex-col">
+          <form onSubmit={(e) => handleLogin(e)} className="flex flex-col">
             <label htmlFor="email" className="mb-1 text-gray-700">
               Email
             </label>

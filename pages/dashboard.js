@@ -1,40 +1,19 @@
 import Navigation from "components/Navigation";
-import { useAuth } from "utils/user-auth";
-import NotSignedIn from "components/Navigation";
+import { useSession } from "next-auth/react";
 
 export default function dashboard() {
-  const { user } = useAuth();
-  if (!user) {
-    return <NotSignedIn />;
-  }
+  const { data: session } = useSession();
 
   return (
     <>
-      <Navigation dashboard />
-      <h1>dashboard</h1>
+      <Navigation />
+      <h1 className="text-4xl">dashboard</h1>
+      {session ? <p>Hello, {session.user.name}</p> : ""}
       <a
-        href={`https://www.tiktok.com/auth/authorize/client_key=${process.env.NEXT_PUBLIC_tiktok_client_key}&response_type=code&scope=user.info.basic&redirect_uri=https://so-me-manager.vercel.app/dashboard&state=${process.env.NEXT_PUBLIC_RS}`}
+        href={`https://www.tiktok.com/auth/authorize/?client_key=${process.env.NEXT_PUBLIC_tiktok_client_key}&response_type=code&scope=user.info.basic&redirect_uri=https://so-me-manager.vercel.app/dashboard&state=${process.env.NEXT_PUBLIC_RS}`}
       >
-        login with tiktok
+        connect your tiktok account
       </a>
     </>
   );
 }
-
-// export async function getStaticProps() {
-//   const res = await fetch("https://open.tiktokapis.com/v2/user/info/", {
-//     headers: {
-//       Authorization: "Bearer " +
-//     },
-//   });
-//   const data = await res.json();
-
-//   return { props: { data } };
-// }
-
-// async function tiktokLogin() {
-//   const res = await fetch("/api/tiktok");
-//   const data = await res.json();
-
-//   console.log(data);
-// }

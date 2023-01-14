@@ -1,20 +1,30 @@
-import { auth } from "/firebase";
-import { useAuth } from "utils/user-auth";
 import Image from "next/image";
 import Link from "next/link";
 import Navigation from "components/Navigation";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useSession, signIn } from "next-auth/react";
+import { auth } from "/firebase";
 
 export default function login() {
-  const { setUser } = useAuth();
+  const { status } = useSession();
+  const router = useRouter();
 
-  function handleLogin(e) {
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [status, router]);
+
+  async function handleLogin(e) {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
 
-    auth.signInWithEmailAndPassword(email, password).then((user) => {
-      setUser(user);
-    });
+    auth.signInWithEmailAndPassword(
+      e.target.email.value,
+      e.target.password.value
+    );
+
+    router.push("/dashboard");
   }
 
   return (
