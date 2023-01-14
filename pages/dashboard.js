@@ -1,28 +1,40 @@
 import Navigation from "components/Navigation";
-import Link from "next/link";
 import { useAuth } from "utils/user-auth";
+import NotSignedIn from "components/NotSignedIn";
 
-export default function dashboard() {
-  const { user } = useAuth();
+export default function dashboard({ data }) {
+  // const { user } = useAuth();
+  // if (!user) {
+  //   return <NotSignedIn />;
+  // }
 
-  if (!user) {
-    return (
-      <>
-        <Navigation />
-        <div className="text-center my-32">
-          <p className="text-4xl mb-2">you are not signed in!</p>
-          <Link href="/login" className="font-xl">
-            Login
-          </Link>
-        </div>
-      </>
-    );
-  }
+  // async function tiktokLogin() {
+  //   const res = await fetch("/api/tiktok");
+  //   const data = await res.json();
+
+  //   console.log(data);
+  // }
 
   return (
     <>
       <Navigation dashboard />
       <h1>dashboard</h1>
+      <a
+        href={`https://www.tiktok.com/auth/authorize/client_key=${process.env.NEXT_PUBLIC_tiktok_client_key}&response_type=code&scope=user.info.basic&redirect_uri=https://so-me-manager.vercel.app/dashboard&state=${process.env.NEXT_PUBLIC_RS}`}
+      >
+        login with tiktok
+      </a>
     </>
   );
 }
+
+// export async function getStaticProps() {
+//   const res = await fetch("https://open.tiktokapis.com/v2/user/info/", {
+//     headers: {
+//       Authorization: "Bearer " +
+//     },
+//   });
+//   const data = await res.json();
+
+//   return { props: { data } };
+// }
