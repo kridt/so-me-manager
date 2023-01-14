@@ -1,5 +1,6 @@
 import Navigation from "components/Navigation";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function dashboard() {
   const { data: session } = useSession();
@@ -7,13 +8,11 @@ export default function dashboard() {
   return (
     <>
       <Navigation />
-      <h1 className="text-4xl">dashboard</h1>
-      {session ? <p>Hello, {session.user.name}</p> : ""}
-      <a
-        href={`https://www.tiktok.com/auth/authorize/?client_key=${process.env.NEXT_PUBLIC_tiktok_client_key}&response_type=code&scope=user.info.basic&redirect_uri=https://so-me-manager.vercel.app/dashboard&state=${process.env.NEXT_PUBLIC_RS}`}
-      >
-        connect your tiktok account
-      </a>
+      <main className="max-w-screen-xl mx-auto p-4 space-y-4">
+        <h1 className="text-4xl">dashboard</h1>
+        {session ? <p>Hello, {session.user.name}</p> : ""}
+        <Link href="/api/tiktok">connect your tiktok account</Link>
+      </main>
     </>
   );
 }
