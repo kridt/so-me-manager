@@ -1,8 +1,8 @@
 import Navigation from "components/Navigation";
 import { useAuth } from "utils/user-auth";
-import NotSignedIn from "components/NotSignedIn";
+import NotSignedIn from "components/Navigation";
 
-export default function dashboard({ data }) {
+export default function dashboard() {
   const { user } = useAuth();
   if (!user) {
     return <NotSignedIn />;

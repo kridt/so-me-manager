@@ -25,8 +25,9 @@ export default function login() {
           <div className="mb-10 md:my-4 text-center lg:mb-14">
             <h1 className="text-6xl font-serif mb-4">Sign up</h1>
             <p className="text-xl leading-relaxed">
-              A social media management tool for businesses, allowing them to schedule posts, track
-              analytics, and manage multiple social media accounts.
+              A social media management tool for businesses, allowing them to
+              schedule posts, track analytics, and manage multiple social media
+              accounts.
             </p>
           </div>
           <form onSubmit={handleLogin} className="flex flex-col">
@@ -52,7 +53,8 @@ export default function login() {
             />
             <button
               className="block w-full px-3 py-4 font-medium text-white bg-gray-500 rounded-lg"
-              type="submit">
+              type="submit"
+            >
               Sign up
             </button>
           </form>

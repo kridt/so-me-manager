@@ -72,7 +72,8 @@ export default function Navigation({ dashboard }) {
         )}
         <Link
           href="/trial"
-          className="bg-[#212427] text-white font-bold py-3 px-4 whitespace-nowrap inline-block">
+          className="bg-[#212427] text-white font-bold py-3 px-4 whitespace-nowrap inline-block"
+        >
           Start free trial
         </Link>
       </div>

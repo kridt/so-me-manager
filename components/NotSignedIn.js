@@ -1,5 +1,5 @@
-import Navigation from "components/Navigation";
 import Link from "next/link";
+import Navigation from "components/Navigation";
 
 export default function NotSignedIn() {
   return (
