@@ -3,17 +3,10 @@ import { useAuth } from "utils/user-auth";
 import NotSignedIn from "components/NotSignedIn";
 
 export default function dashboard({ data }) {
-  // const { user } = useAuth();
-  // if (!user) {
-  //   return <NotSignedIn />;
-  // }
-
-  // async function tiktokLogin() {
-  //   const res = await fetch("/api/tiktok");
-  //   const data = await res.json();
-
-  //   console.log(data);
-  // }
+  const { user } = useAuth();
+  if (!user) {
+    return <NotSignedIn />;
+  }
 
   return (
     <>
@@ -37,4 +30,11 @@ export default function dashboard({ data }) {
 //   const data = await res.json();
 
 //   return { props: { data } };
+// }
+
+// async function tiktokLogin() {
+//   const res = await fetch("/api/tiktok");
+//   const data = await res.json();
+
+//   console.log(data);
 // }
