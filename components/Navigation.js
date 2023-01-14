@@ -6,26 +6,26 @@ export default function Navigation({ dashboard }) {
 
   if (dashboard) {
     return (
-      <nav className="flex justify-between items-center p-4 font-qucksand">
-        <ul className="flex">
+      <nav className="flex justify-between items-center flex-col md:flex-row gap-4 p-4 font-qucksand">
+        <ul className="flex flex-col sm:flex-row items-center gap-8">
           <li>
-            <Link href="/" className="py-4 px-8 whitespace-nowrap">
+            <Link href="/" className="whitespace-nowrap">
               LOGO
             </Link>
           </li>
           <li>
-            <Link href="/upload" className="py-4 px-8 whitespace-nowrap">
+            <Link href="/upload" className="whitespace-nowrap">
               Make a post
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="py-4 px-8 whitespace-nowrap">
+            <Link href="/contact" className="whitespace-nowrap">
               Contact
             </Link>
           </li>
         </ul>
-        <div>
-          <Link href="/login" className="py-4 px-8 whitespace-nowrap">
+        <div className="flex flex-col sm:flex-row items-center gap-8">
+          <Link href="/login" className="whitespace-nowrap">
             Log out
           </Link>
         </div>
@@ -34,45 +34,45 @@ export default function Navigation({ dashboard }) {
   }
 
   return (
-    <nav className="flex justify-between items-center p-4 font-qucksand">
-      <ul className="flex">
+    <nav className="flex justify-between items-center flex-col md:flex-row gap-4 p-4 font-qucksand">
+      <ul className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
         <li>
-          <Link href="/" className="py-4 px-8 whitespace-nowrap">
+          <Link href="/" className="whitespace-nowrap">
             LOGO
           </Link>
         </li>
         <li>
-          <Link href="/WhyXXX" className="py-4 px-8 whitespace-nowrap">
+          <Link href="/WhyXXX" className="whitespace-nowrap">
             Why XXX
           </Link>
         </li>
         <li>
-          <Link href="/WhatWeDo" className="py-4 px-8 whitespace-nowrap">
+          <Link href="/WhatWeDo" className="whitespace-nowrap">
             What we do
           </Link>
         </li>
         <li>
-          <Link href="/pricing" className="py-4 px-8 whitespace-nowrap">
+          <Link href="/pricing" className="whitespace-nowrap">
             Pricing
           </Link>
         </li>
         <li>
-          <Link href="/contact" className="py-4 px-8 whitespace-nowrap">
+          <Link href="/contact" className="whitespace-nowrap">
             Contact
           </Link>
         </li>
       </ul>
-      <div>
+      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
         {user ? (
           ""
         ) : (
-          <Link href="/login" className="py-4 px-8 whitespace-nowrap">
+          <Link href="/login" className="whitespace-nowrap">
             Log in
           </Link>
         )}
         <Link
           href="/trial"
-          className="bg-[#212427] text-white font-bold py-4 px-8 whitespace-nowrap inline-block">
+          className="bg-[#212427] text-white font-bold py-3 px-4 whitespace-nowrap inline-block">
           Start free trial
         </Link>
       </div>
