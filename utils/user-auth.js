@@ -1,4 +1,4 @@
-import { auth } from "public/firebase";
+import { auth } from "/firebase";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const UserContext = createContext(null);

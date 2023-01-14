@@ -1,4 +1,4 @@
-import { UserProvider } from "utils/user-context";
+import { UserProvider } from "utils/user-auth";
 import "./globals.css";
 
 export default function App({ Component, pageProps }) {

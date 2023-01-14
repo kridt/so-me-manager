@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { useAuth } from "utils/user-context";
+import { useAuth } from "utils/user-auth";
 
 export default function Navigation({ dashboard }) {
   const { user } = useAuth();
 
   if (dashboard) {
     return (
-      <nav className="flex justify-between items-center flex-col md:flex-row gap-4 p-4 font-qucksand">
+      <nav className="flex justify-between items-center flex-col md:flex-row gap-4 p-4 font-qucksand max-w-screen-xl mx-auto">
         <ul className="flex flex-col sm:flex-row items-center gap-8">
           <li>
             <Link href="/" className="whitespace-nowrap">
@@ -34,7 +34,7 @@ export default function Navigation({ dashboard }) {
   }
 
   return (
-    <nav className="flex justify-between items-center flex-col md:flex-row gap-4 p-4 font-qucksand">
+    <nav className="flex justify-between items-center flex-col md:flex-row gap-4 p-4 font-qucksand max-w-screen-xl mx-auto">
       <ul className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
         <li>
           <Link href="/" className="whitespace-nowrap">

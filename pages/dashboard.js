@@ -1,6 +1,6 @@
 import Navigation from "components/Navigation";
 import Link from "next/link";
-import { useAuth } from "utils/user-context";
+import { useAuth } from "utils/user-auth";
 
 export default function dashboard() {
   const { user } = useAuth();
